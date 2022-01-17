@@ -1,0 +1,4 @@
+#Mon Jan 17 19:42:40 CAT 2022
+base.0=C\:\\laragon\\www\\flutter_app2\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
