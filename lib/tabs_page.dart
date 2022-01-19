@@ -26,8 +26,8 @@ class TabsPage extends StatelessWidget {
                   text: "Ballot",
                 ),
                 Tab(
-                  icon: Icon(Icons.book),
-                  text: "Results",
+                  icon: Icon(Icons.info),
+                  text: "About",
                 ),
 //                Tab(
 //                  icon: Icon(Icons.camera_enhance),
@@ -41,8 +41,8 @@ class TabsPage extends StatelessWidget {
           body: TabBarView(
             children: [
               MyBallot(title: "title"),
-              MyBallot(title: "title"),
-              //MyScanner(title: "Scanner"),
+              //MyBallot(title: "title"),
+              InfoPage(title: "Scanner"),
             ],
           ),
 

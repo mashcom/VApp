@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 import 'package:http/http.dart' as http;
 
 class AuthScreen extends StatefulWidget {
@@ -74,7 +73,9 @@ class _AuthScreenState extends State<AuthScreen> {
               height: 50,
             ),
             ElevatedButton(
-                onPressed: _scan, child: Text("TAP TO SCAN YOUR NATIONAL ID")),
+              onPressed: _scan,
+              child: Text("TAP TO SCAN YOUR NATIONAL ID"),
+            ),
           ],
         ),
       ),
@@ -105,6 +106,10 @@ class _AuthScreenState extends State<AuthScreen> {
           CupertinoPageRoute(builder: (BuildContext context) => TabsPage()));
     }
     if (result['success'] == false) {
+      final snackBar = SnackBar(
+        content: Text(result['message']),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return Navigator.push(
         context,
         CupertinoPageRoute(

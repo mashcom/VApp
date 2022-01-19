@@ -32,7 +32,7 @@
 23-->[androidx.core:core:1.6.0] C:\Users\Mashcom\.gradle\caches\transforms-2\files-2.1\67ff0aaf930f65024e6c37d99bc9e852\core-1.6.0\AndroidManifest.xml:24:18-86
 24        android:debuggable="true"
 25        android:icon="@mipmap/ic_launcher"
-26        android:label="flutter_app2"
+26        android:label="MSU Voter App"
 27        android:largeHeap="true"
 27-->[:flutter_barcode_scanner] C:\laragon\www\flutter_app2\build\flutter_barcode_scanner\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-33
 28        android:theme="@style/Theme.AppCompat.NoActionBar" >

@@ -50,18 +50,6 @@ class _CandidateListState extends State<CandidateList> {
       _productListReady = true;
     });
     return;
-    getProducts().then((resp) {
-      var result = jsonDecode(resp);
-
-      if (result['success']) {
-        productList = result['data'];
-      }
-      print("PRODUCT LIST");
-      print(productList);
-      setState(() {
-        _productListReady = true;
-      });
-    });
   }
 
   Future<void> _showMyDialog(candidate) async {
@@ -133,6 +121,10 @@ class _CandidateListState extends State<CandidateList> {
                 var result = jsonDecode(response.body);
                 print(result);
                 if (result["success"]) {
+                  final snackBar = SnackBar(
+                    content: Text("Vote successfully cast!"),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushReplacement(
                     context,
                     CupertinoPageRoute(
@@ -186,20 +178,29 @@ class _CandidateListState extends State<CandidateList> {
   Widget productWidget(BuildContext context, product) {
     return ListTile(
       onTap: () {
-        _showMyDialog(product);
+        if (widget.product["voted"] != false) {
+          final snackBar = SnackBar(
+            content: Text("You have already voted in this category!"),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          _showMyDialog(product);
+        }
       },
-      trailing: (widget.product["voted"] !=false)?((widget.product["voted"] == product["id"])
-          ? Icon(
-              Icons.check_box,
-              color: Colors.teal,
-            )
+      trailing: (widget.product["voted"] != false)
+          ? ((widget.product["voted"] == product["id"])
+              ? Icon(
+                  Icons.check_box,
+                  color: Colors.teal,
+                )
+              : Icon(
+                  Icons.whatshot,
+                  color: Colors.red,
+                ))
           : Icon(
-              Icons.whatshot,
-              color: Colors.red,
-            )):Icon(
-        Icons.pending_actions,
-        color: Colors.black12,
-      ),
+              Icons.pending_actions,
+              color: Colors.black12,
+            ),
       leading: Column(
         children: <Widget>[
           Expanded(

@@ -10,8 +10,8 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 
-class MyScanner extends StatefulWidget {
-  const MyScanner({Key? key, required this.title}) : super(key: key);
+class InfoPage extends StatefulWidget {
+  const InfoPage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -25,16 +25,15 @@ class MyScanner extends StatefulWidget {
   final String title;
 
   @override
-  State<MyScanner> createState() => _MyScannerState();
+  State<InfoPage> createState() => _InfoPageState();
 }
 
-class _MyScannerState extends State<MyScanner> {
+class _InfoPageState extends State<InfoPage> {
   String barcode = '';
   Uint8List bytes = Uint8List(200);
   @override
   void initState() {
     super.initState();
-    _scan();
   }
 
   @override
@@ -45,7 +44,9 @@ class _MyScannerState extends State<MyScanner> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(onPressed: _scan, child: Text("TAP TO SCAN YOUR NATIONAL ID")),
+            Text("MSU Voter App"),
+            Text("v0.1.0"),
+            Text("A simple voting client for SRC Elections"),
           ],
         ),
       ),
